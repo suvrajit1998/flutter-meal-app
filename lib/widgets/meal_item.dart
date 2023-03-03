@@ -9,20 +9,27 @@ class MealItem extends StatelessWidget {
   final Complexity complexity;
   final Affordability affordability;
   final String id;
+  //  Function removeMeal = () {} ;
 
-  const MealItem(
-      {required this.affordability,
-      required this.imageUrl,
-      required this.complexity,
-      required this.duration,
-      required this.title,
-      required this.id});
+  const MealItem({
+    required this.affordability,
+    required this.imageUrl,
+    required this.complexity,
+    required this.duration,
+    required this.title,
+    required this.id,
+    //  this.removeMeal,
+  });
 
-  void _selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
+  void _selectMeal(BuildContext context) async {
+    final result = await Navigator.of(context).pushNamed(
       MealDetailScreen.routeName,
       arguments: id,
     );
+
+    if (result != null) {
+      // removeMeal(result);
+    }
   }
 
   String get complexityText {
